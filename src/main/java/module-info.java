@@ -1,4 +1,4 @@
-module com.example.pinapartidascop3330assignment4part2 {
+module ucf.assignments {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;

@@ -3,30 +3,33 @@
 
 class ToDoController
 {
-    - List<Lists> lists
-    + static void addList ()
-    + static void removeList ()
-    + static void editListName ()
-    + static void addItem ()
-    + static void removeItem ()
-    + static void editDesc ()
-    + static void editDueDate ()
-    + static void markItemComp ()
-    + static void displayItems ()
-    + static void displayIncomplete ()
-    + static void displayComplete ()
-    + static void saveList ()
-    + static void saveAllList ()
-    + static void loadList ()
-    + static void loadAllLists ()
-}
-
-class Lists
-{
-    - String listName
-    - List<ListItem> listItem
-    + Lists (String listName)
-    + String getName()
+    - TextField itemDescAdd
+    - TextField editDesc
+    - TextField dueDateAdd
+    - TextField editDueDate
+    - TextField itemDescSelect
+    - TextField fileLoad
+    - TextField display
+    - List<ListItem> list
+    - void addButton ()
+    - void addItem (String itemDesc, String dueDate)
+    - void removeButton ()
+    - void removeItem (String inputRem)
+    - void removeAllItems ()
+    - void editDescButton ()
+    - void editDesc (String inputEdit, String inputDesc)
+    - void editDueDateButton ()
+    - void editDueDate (String inputEdit, String inputDueDate)
+    - void markCompButton ()
+    - void markItemComp (String inputEdit)
+    - void markIncompButton ()
+    - void markItemIncomp (String inputEdit)
+    - void displayItems ()
+    - void displayIncomplete ()
+    - void displayComplete ()
+    - void saveList ()
+    - void loadListButton ()
+    - void loadList (String filepath)
 }
 
 class ListItem
@@ -35,14 +38,15 @@ class ListItem
     - String dueDate
     - int isComplete
     + ListItem (String itemDesc, int isComplete)
-    + ListItem (String dueDate)
-    + ListItem (int isComplete)
+    + ListItem (String itemDesc, String dueDate, int isComplete)
+    + void setItemDesc(String itemDesc)
+    + void setItemDueDate(String dueDate)
+    + void setIsComplete(int isComplete)
     + String getDesc()
     + String getDueDate()
     + int getIsComplete()
 }
 
-ToDoController <|--- Lists
-Lists <|--- ListItem
+ToDoController <|--- ListItem
 
 @enduml

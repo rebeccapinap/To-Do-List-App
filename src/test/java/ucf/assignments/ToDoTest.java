@@ -9,30 +9,7 @@ import org.junit.jupiter.api.Test;
 
 public class ToDoTest {
     /*
-    List<Lists> testListOfLists = new ArrayList<Lists>();
-    List<Lists> testItemList = new ArrayList<Lists>();
-
-    @Test
-    public void addListTest()
-    {
-        Create object of type list
-        Add list to testListOfLists by calling addList from ToDoController
-        Assert testListOfLists contains list created
-    }
-
-    @Test
-    public void removeListTest()
-    {
-        Remove a list from testListOfLists by calling removeList from ToDoController
-        Assert testListOfLists does not contain list
-    }
-
-    @Test
-    public void editListNameTest()
-    {
-        Call editListName from ToDoController and change name of object in testListOfLists
-        Assert name of object is equal to name
-    }
+    List<ListItem> testItemList = new ArrayList<ListItem>();
 
     @Test
     public void addItemTest()
@@ -99,15 +76,6 @@ public class ToDoTest {
         Create file
         Loop through testItemList and add to file
         Call saveList from ToDoController with testItemList
-        Assert files are equal through parsing
-    }
-
-    @Test
-    public void saveAllListTest()
-    {
-        Create file
-        Loop through testListOfLists and add to file
-        Call saveAllList from ToDoController with testListOfLists
         Assert files are equal through parsing
     }
 
