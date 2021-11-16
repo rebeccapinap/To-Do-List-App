@@ -9,7 +9,8 @@ class ToDoController
     - TextField editDueDate
     - TextField itemDescSelect
     - TextField fileLoad
-    - TextField display
+    - TextArea display
+    - TextArea error
     - List<ListItem> list
     - void addButton ()
     - void addItem (String itemDesc, String dueDate)
@@ -37,7 +38,6 @@ class ListItem
     - String itemDesc
     - String dueDate
     - int isComplete
-    + ListItem (String itemDesc, int isComplete)
     + ListItem (String itemDesc, String dueDate, int isComplete)
     + void setItemDesc(String itemDesc)
     + void setItemDueDate(String dueDate)

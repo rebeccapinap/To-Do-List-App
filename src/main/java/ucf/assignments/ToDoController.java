@@ -33,16 +33,38 @@ public class ToDoController {
     private TextField fileLoad;
 
     @FXML
-    private TextField display;
+    private TextArea display;
+
+    @FXML
+    private TextArea error;
 
     private List<ListItem> list = new ArrayList<ListItem>();
 
     @FXML
     private void addButton ()
     {
+        int dueDateLen;
+        error.setText("");
         String itemDesc = itemDescAdd.getText();
         String dueDate = dueDateAdd.getText();
-        addItem(itemDesc, dueDate);
+
+        dueDateLen = dueDate.length();
+
+        if (dueDateLen != 0 && dueDateLen != 10)
+            error.setText("Due date in add area has invalid input.\n Please make sure input is in the format 'YYYY-MM-DD' and try again.");
+         else
+        {
+            if (dueDateLen == 0)
+                addItem(itemDesc, dueDate);
+            else if (dueDate.indexOf("-") != 4 && dueDate.indexOf("-") != 7)
+                error.setText("Due date in add area has invalid input.\n Please make sure input is in the format 'YYYY-MM-DD' and try again.");
+            else if ((int)dueDate.charAt(5) < 48 || (int)dueDate.charAt(5) > 49)
+                error.setText("Due date in add area has invalid input.\n Please make sure input is a valid date and try again.");
+            else if ((int)dueDate.charAt(8) < 48 || (int)dueDate.charAt(8) > 51)
+                error.setText("Due date in add area has invalid input.\n Please make sure input is a valid date and try again.");
+            else
+                addItem(itemDesc, dueDate);
+        }
     }
 
     private void addItem (String itemDesc, String dueDate)
@@ -51,8 +73,8 @@ public class ToDoController {
         //Search for object of type Lists with name entered in text field of list to select
         //Create an object of type listItem and add it to the list of list items
         //Set itemDesc of listItem object with description input in text field and set complete status to incomplete
-        if (dueDate.equals(""))
-            list.add(new ListItem(itemDesc, 0));
+        if (dueDate == null)
+            list.add(new ListItem(itemDesc, "",0));
         else
             list.add(new ListItem(itemDesc, dueDate, 0));
     }
@@ -60,6 +82,7 @@ public class ToDoController {
     @FXML
     private void removeButton ()
     {
+        error.setText("");
         String inputRem = itemDescSelect.getText();
         removeItem(inputRem);
     }
@@ -87,12 +110,14 @@ public class ToDoController {
     @FXML
     private void removeAllItems ()
     {
+        error.setText("");
         list.removeAll(list);
     }
 
     @FXML
     private void editDescButton ()
     {
+        error.setText("");
         String inputEdit = itemDescSelect.getText();
         String inputDesc = editDesc.getText();
         editDesc(inputEdit, inputDesc);
@@ -122,9 +147,28 @@ public class ToDoController {
     @FXML
     private void editDueDateButton ()
     {
+        int dueDateLen;
+        error.setText("");
         String inputEdit = itemDescSelect.getText();
         String inputDueDate = editDueDate.getText();
-        editDueDate(inputEdit, inputDueDate);
+
+        dueDateLen = inputDueDate.length();
+
+        if (dueDateLen != 0 && dueDateLen != 10)
+            error.setText("Due date in add area has invalid input.\n Please make sure input is in the format 'YYYY-MM-DD' and try again.");
+        else
+        {
+            if (dueDateLen == 0)
+                editDueDate(inputEdit, inputDueDate);
+            else if (inputDueDate.indexOf("-") != 4 && inputDueDate.indexOf("-") != 7)
+                error.setText("Due date in add area has invalid input.\n Please make sure input is in the format 'YYYY-MM-DD' and try again.");
+            else if ((int)inputDueDate.charAt(5) < 48 || (int)inputDueDate.charAt(5) > 49)
+                error.setText("Due date in add area has invalid input.\n Please make sure input is a valid date and try again.");
+            else if ((int)inputDueDate.charAt(8) < 48 || (int)inputDueDate.charAt(8) > 51)
+                error.setText("Due date in add area has invalid input.\n Please make sure input is a valid date and try again.");
+            else
+                editDueDate(inputEdit, inputDueDate);
+        }
     }
 
     private void editDueDate (String inputEdit, String inputDueDate)
@@ -152,6 +196,7 @@ public class ToDoController {
     @FXML
     private void markCompButton ()
     {
+        error.setText("");
         String inputEdit = itemDescSelect.getText();
         markItemComp(inputEdit);
     }
@@ -184,6 +229,7 @@ public class ToDoController {
     @FXML
     private void markIncompButton ()
     {
+        error.setText("");
         String inputEdit = itemDescSelect.getText();
         markItemIncomp(inputEdit);
     }
@@ -218,6 +264,7 @@ public class ToDoController {
     {
         //Do if display all items button is pressed:
         //Output every object of type ListItem's item description from each object of type Lists
+        error.setText("");
         int i;
         int listSize = list.size();
         String output = "";
@@ -228,10 +275,16 @@ public class ToDoController {
         for(i = 0; i < listSize; i++)
         {
             output += list.get(i).getDesc();
-            output += " ";
-            output += list.get(i).getDueDate();
-            output += " ";
-            output += list.get(i).getIsComplete();
+            output += ", ";
+            if  (list.get(i).getDueDate().equals(""))
+                output += "No due date";
+            else
+                output += list.get(i).getDueDate();
+            output += ", ";
+            if (list.get(i).getIsComplete() == 0)
+                output += "Incomplete";
+            if (list.get(i).getIsComplete() == 1)
+                output += "Complete";
             output += "\n";
         }
 
@@ -243,6 +296,7 @@ public class ToDoController {
     {
         //Do if display incomplete items button is pressed:
         //Output every object of type ListItem's item description from each object of type Lists that has isComplete = incomplete
+        error.setText("");
         int i;
         int listSize = list.size();
         String output = "";
@@ -255,10 +309,13 @@ public class ToDoController {
             if (list.get(i).getIsComplete() == 0)
             {
                 output += list.get(i).getDesc();
-                output += " ";
-                output += list.get(i).getDueDate();
-                output += " ";
-                output += list.get(i).getIsComplete();
+                output += ", ";
+                if  (list.get(i).getDueDate().equals(""))
+                    output += "No due date";
+                else
+                    output += list.get(i).getDueDate();
+                output += ", ";
+                output += "Incomplete";
                 output += "\n";
             }
         }
@@ -271,6 +328,7 @@ public class ToDoController {
     {
         //Do if display complete items button is pressed:
         //Output every object of type ListItem's item description from each object of type Lists that has isComplete = complete
+        error.setText("");
         int i;
         int listSize = list.size();
         String output = "";
@@ -283,10 +341,13 @@ public class ToDoController {
             if (list.get(i).getIsComplete() == 1)
             {
                 output += list.get(i).getDesc();
-                output += " ";
-                output += list.get(i).getDueDate();
-                output += " ";
-                output += list.get(i).getIsComplete();
+                output += ", ";
+                if  (list.get(i).getDueDate().equals(""))
+                    output += "No due date";
+                else
+                    output += list.get(i).getDueDate();
+                output += ", ";
+                output += "Complete";
                 output += "\n";
             }
         }
@@ -300,26 +361,41 @@ public class ToDoController {
         //Search for object of type Lists with the name entered from list of Lists
         //If found, Parse through every object of type ListItem in the list entered and add list item description to a file
         //Save file to external storage
-        FileWriter writer = new FileWriter("src/main/java/ucf.assignments/ToDoList.txt");
+        error.setText("");
+        FileWriter writer = new FileWriter("src/main/java/ucf/assignments/ToDoList.txt");
         PrintWriter print = new PrintWriter(writer);
         int i;
         int listSize = list.size();
+        String output = "";
 
         // Print to file
         for(i = 0; i < listSize; i++)
         {
+            output += list.get(i).getDesc();
+            output += ", ";
+            if  (list.get(i).getDueDate().equals(""))
+                output += "No due date";
+            else
+                output += list.get(i).getDueDate();
+            output += ", ";
+            if (list.get(i).getIsComplete() == 0)
+                output += "Incomplete";
+            if (list.get(i).getIsComplete() == 1)
+                output += "Complete";
+            output += "\n";
+
             // Print to file
-            print.printf("%s" + "%n", list.get(i));
+            print.printf(output);
         }
 
         print.close();
     }
 
     @FXML
-    private void loadListButton ()
-    {
+    private void loadListButton () throws FileNotFoundException {
+        error.setText("");
         String filepath = fileLoad.getText();
-        markItemIncomp(filepath);
+        loadList(filepath);
     }
 
     private void loadList (String filepath) throws FileNotFoundException {
@@ -328,12 +404,20 @@ public class ToDoController {
         //Parse through file and add each line with addItem()
         File input = new File(filepath);
         Scanner s = new Scanner(input);
-        ArrayList<String> list = new ArrayList<String>();
+        String temp;
+        String[] indivInput;
+        int complete = 0;
 
         // Scans in every line in File
         while (s.hasNextLine())
         {
-            list.add(s.nextLine());
+            temp = s.nextLine();
+            indivInput = temp.split(", ", 3);
+            if (indivInput[2].equals("Incomplete"))
+                complete = 0;
+            if (indivInput[2].equals("Complete"))
+                complete = 1;
+            list.add(new ListItem(indivInput[0], indivInput[1], complete));
         }
         s.close();
     }
@@ -344,12 +428,6 @@ class ListItem
     private String itemDesc;
     private String dueDate;
     private int isComplete;
-
-    public ListItem (String itemDesc, int isComplete)
-    {
-        this.itemDesc = itemDesc;
-        this.isComplete = isComplete;
-    }
 
     public ListItem (String itemDesc, String dueDate, int isComplete)
     {
