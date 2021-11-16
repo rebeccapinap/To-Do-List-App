@@ -1,1 +1,4 @@
-Do homework, 2021-11-15, Incomplete
+do math homework, 2021-11-15, Incomplete
+do english homework, 2021-11-20, Incomplete
+do history homework, 2021-11-25, Complete
+do science homework, 2021-11-30, Complete

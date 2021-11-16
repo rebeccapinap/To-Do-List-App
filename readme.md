@@ -16,13 +16,16 @@ If you want to add an item to your to-do list enter the item description into th
 *Due dates must always be in the format 'YYYY-MM-DD' and a valid date within the Gregorian Calendar. If it is not, there will be an error message.*
 ### **Editing the Item Description or Item Due Date**
 The first step to this is entering the current Item Description of the item into the text box that says 'Insert Item Description' you want to modify.
+<br>!Casing matters! Please enter the item description exactly how when you added the item.
 <br><br>If you want to change the Item Description - with the current Item Description in the proper text box - enter the new item description you want the item to have in the text box that says 'Insert New Item Description' and press the button that says 'Edit' that is located right next to the new item description text box.
 <br><br>If you want to change the Item Due Date - with the current Item Description in the proper text box - enter the new item due date you want the item to have in the text box that says 'Insert New Item Due Date' and press the button that says 'Edit' that is located right next to the new item due date text box,
 ### **Marking an Item Complete/Incomplete**
 *The first step to this is entering the current Item Description of the item into the text box that says 'Insert Item Description' you want to modify.*
+<br>!Casing matters! Please enter the item description exactly how when you added the item.
 <br><br>If you want to change the Item Completion Status - with the current Item Description in the proper text box - press either the button that says 'Complete' or the button that says 'Incomplete' in order to mark an item of the list complete or incomplete
 ### **Removing an Item from the List**
 *The first step to this is entering the current Item Description of the item into the text box that says 'Insert Item Description' you want to modify.*
+<br>!Casing matters! Please enter the item description exactly how when you added the item.
 <br><br>If you want to remove an item from your list - with the current Item Description in the proper text box - press the button that says 'Remove Item' in order to remove the item you have selected.
 ## Bottom/Display Section:
 ### **Displaying All Items from To-Do List**

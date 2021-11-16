@@ -8,9 +8,6 @@ package ucf.assignments;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ToDoTest {
     @Test
     public void validDueDateTest()
@@ -35,5 +32,7 @@ public class ToDoTest {
         assertEquals(wrongResponse2, ToDoController.validDueDate(wrongDueDateLen, rightDueDate));
         assertEquals(wrongResponse1, ToDoController.validDueDate(rightDueDateLen, wrongDueDate));
     }
+
+    // Couldn't test other functions because they were void and accessed list in ToDoController class
 }
 
