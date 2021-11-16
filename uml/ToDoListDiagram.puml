@@ -1,6 +1,12 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+class ToDoApp
+{
+    + static void main(String[] args)
+    + void start(Stage primaryStage)
+}
+
 class ToDoController
 {
     - TextField itemDescAdd
@@ -12,25 +18,25 @@ class ToDoController
     - TextArea display
     - TextArea error
     - List<ListItem> list
-    - void addButton ()
-    - void addItem (String itemDesc, String dueDate)
-    - void removeButton ()
-    - void removeItem (String inputRem)
-    - void removeAllItems ()
-    - void editDescButton ()
-    - void editDesc (String inputEdit, String inputDesc)
-    - void editDueDateButton ()
-    - void editDueDate (String inputEdit, String inputDueDate)
-    - void markCompButton ()
-    - void markItemComp (String inputEdit)
-    - void markIncompButton ()
-    - void markItemIncomp (String inputEdit)
-    - void displayItems ()
-    - void displayIncomplete ()
-    - void displayComplete ()
-    - void saveList ()
-    - void loadListButton ()
-    - void loadList (String filepath)
+    + void addButton ()
+    + void addItem (String itemDesc, String dueDate)
+    + void removeButton ()
+    + void removeItem (String inputRem)
+    + void removeAllItems ()
+    + void editDescButton ()
+    + void editDesc (String inputEdit, String inputDesc)
+    + void editDueDateButton ()
+    + void editDueDate (String inputEdit, String inputDueDate)
+    + void markCompButton ()
+    + void markItemComp (String inputEdit)
+    + void markIncompButton ()
+    + void markItemIncomp (String inputEdit)
+    + void displayItems ()
+    + void displayIncomplete ()
+    + void displayComplete ()
+    + void saveList ()
+    + void loadListButton ()
+    + void loadList (String filepath)
 }
 
 class ListItem
@@ -46,7 +52,7 @@ class ListItem
     + String getDueDate()
     + int getIsComplete()
 }
-
+ToDoApp <|--- ToDoController
 ToDoController <|--- ListItem
 
 @enduml

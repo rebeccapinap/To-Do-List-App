@@ -6,86 +6,34 @@ package ucf.assignments;
  */
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ToDoTest {
-    /*
-    List<ListItem> testItemList = new ArrayList<ListItem>();
-
     @Test
-    public void addItemTest()
+    public void validDueDateTest()
     {
-        Add a new item to testItemList by calling addItem from ToDoController
-        Assert testList contains item created
-    }
+        // Make different test strings and mix them in asserts to get corresponding responses
+        // Asserts corresponding responses are equal to responses returned from function
 
-    @Test
-    public void removeItemTest()
-    {
-        Remove an item from testItemList by calling removeItem from ToDoController
-        Assert testList does not contain item
-    }
+        // Inputs
+        int rightDueDateLen = 10;
+        int wrongDueDateLen = 0;
 
-    @Test
-    public void editDescTest()
-    {
-        Call editDesc from ToDoController
-        Assert testItemList contains an testObject with new description
-    }
+        String rightDueDate = "2021-11-15";
+        String wrongDueDate = "2021-51-15";
 
-    @Test
-    public void editDueDateTest()
-    {
-        Call editDueDate from ToDoController
-        Assert testItemList contains an testObject with new due date
-    }
+        // Outputs
+        String rightResponse = "correct";
+        String wrongResponse1 = "Due date in add area has invalid input.\n Please make sure input is a valid date and try again.";
+        String wrongResponse2 = "Due date in add area has invalid input.\n Please make sure input is in the format 'YYYY-MM-DD' and try again.";
 
-    @Test
-    public void markItemCompTest()
-    {
-        Call markItem from ToDoController
-        Assert testItemList contains an object with correct completion status
+        // Asserts
+        assertEquals(rightResponse, ToDoController.validDueDate(rightDueDateLen, rightDueDate));
+        assertEquals(wrongResponse2, ToDoController.validDueDate(wrongDueDateLen, rightDueDate));
+        assertEquals(wrongResponse1, ToDoController.validDueDate(rightDueDateLen, wrongDueDate));
     }
-
-    @Test
-    public void displayItemsTest()
-    {
-        Create string with display test content
-        Call displayItems from ToDoController with testListOfLists
-        Assert display string from calling displayItems equals test content string
-    }
-
-    @Test
-    public void displayIncompleteTest()
-    {
-        Create string with display test content with incomplete items
-        Call displayIncompleteItems from ToDoController with testListOfLists
-        Assert display string from calling displayIncompleteItems equals test content string
-    }
-
-    @Test
-    public void displayCompleteTest()
-    {
-        Create string with display test content with complete items
-        Call displayCompleteItems from ToDoController with testListOfLists
-        Assert display string from calling displayCompleteItems equals test content string
-    }
-
-    @Test
-    public void saveListTest()
-    {
-        Create file
-        Loop through testItemList and add to file
-        Call saveList from ToDoController with testItemList
-        Assert files are equal through parsing
-    }
-
-    @Test
-    public void loadListTest()
-    {
-        Create testFileItemList
-        Open testFile and parse to add items to testFileItemList
-        Call loadList from ToDoController with testFile
-        Assert testFileItemList is equal to list from call
-    }
-     */
 }
+

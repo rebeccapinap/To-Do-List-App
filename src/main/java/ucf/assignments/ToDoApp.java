@@ -21,6 +21,7 @@ public class ToDoApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+        // Loads the scene
         FXMLLoader fxmlLoader = new FXMLLoader(ToDoApp.class.getResource("/ucf.assignments/ToDo.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         primaryStage.setTitle("Hello!");
