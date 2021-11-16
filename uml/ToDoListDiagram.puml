@@ -26,6 +26,7 @@ class ToDoController
     + void editDescButton ()
     + void editDesc (String inputEdit, String inputDesc)
     + void editDueDateButton ()
+    + static String validDueDate (int dueDateLen, String inputDueDate)
     + void editDueDate (String inputEdit, String inputDueDate)
     + void markCompButton ()
     + void markItemComp (String inputEdit)
